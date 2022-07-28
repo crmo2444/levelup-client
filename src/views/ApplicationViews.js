@@ -4,6 +4,8 @@ import { Register } from "../components/auth/Register"
 import { Authorized } from "./Authorized"
 import { GameList } from "../components/game/GameList"
 import { EventList } from "../components/event/EventList"
+import { GameForm } from "../components/game/GameForm"
+import { EventForm } from "../components/event/EventForm"
 
 
 export const ApplicationViews = () => {
@@ -14,6 +16,9 @@ export const ApplicationViews = () => {
             <Route element={<Authorized />}>
                 <Route path="/" element={<GameList />} />
                 <Route path="/events" element={<EventList />} />
+                <Route path="/events/new" element={<EventForm />} />
+                <Route path="/games/new" element={<GameForm />} />
+                <Route path="/games" element={<GameList />} />
             </Route>
         </Routes>
     </>
