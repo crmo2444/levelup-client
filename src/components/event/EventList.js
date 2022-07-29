@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getEvents } from "../../managers/EventManager.js"
+import { deleteEvent, getEvents } from "../../managers/EventManager.js"
 
 export const EventList = (props) => {
     const [ events, setEvents ] = useState([])
@@ -26,6 +26,9 @@ export const EventList = (props) => {
                         <button onClick={() => {
                             navigate({ pathname: `/events/${event.id}` })
                         }}>Edit</button>
+                        <button onClick={() => {
+                            deleteEvent(event.id)
+                            .then(getEvents().then(data => setEvents(data)))}}>Delete</button>
                         <br></br>
                     </section>
                 })

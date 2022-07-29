@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getGames } from "../../managers/GameManager.js"
+import { deleteGame, getGames } from "../../managers/GameManager.js"
 
 export const GameList = (props) => {
     const [ games, setGames ] = useState([])
@@ -24,6 +24,9 @@ export const GameList = (props) => {
                         <div className="game__players">{game.number_of_players} players needed</div>
                         <div className="game__skillLevel">Skill level is {game.skill_level}</div>
                         <button onClick={() => navigate({ pathname: `/games/${game.id} `})}>Edit</button>
+                        <button onClick={() => {
+                            deleteGame(game.id)
+                            .then(getGames().then(data => setGames(data)))}}>Delete</button>
                         <br></br>
                     </section>
                 })
